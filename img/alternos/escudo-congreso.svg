@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 460 460" width="460" height="460" role="img" aria-labelledby="t4 d4">
+  <title id="t4">Emblema del Congreso de Anáhuac</title>
+  <desc id="d4">Medallón con el escudo de armas del Congreso de Anáhuac: un águila sobre el nopal devorando una serpiente, orlado con los veintitrés capitulaciones de la Nación.</desc>
+  <defs>
+    <radialGradient id="medalla4" cx=".5" cy=".42" r=".7">
+      <stop offset="0" stop-color="#f6efdb"/>
+      <stop offset="1" stop-color="#d9c8a2"/>
+    </radialGradient>
+    <filter id="grano4"><feTurbulence type="fractalNoise" baseFrequency=".9" numOctaves="3"/><feColorMatrix type="saturate" values="0"/><feComponentTransfer><feFuncA type="linear" slope=".13"/></feComponentTransfer><feBlend in="SourceGraphic" mode="multiply"/></filter>
+  </defs>
+
+  <rect width="460" height="460" fill="#e7dcc2"/>
+  <circle cx="230" cy="230" r="206" fill="url(#medalla4)" stroke="#8a7754" stroke-width="4"/>
+  <circle cx="230" cy="230" r="188" fill="none" stroke="#8a7754" stroke-width="1.4"/>
+  <circle cx="230" cy="230" r="150" fill="none" stroke="#8a7754" stroke-width="2.4"/>
+  <circle cx="230" cy="230" r="142" fill="#efe6cf" stroke="#6f6144" stroke-width="1.2"/>
+
+  <!-- letras del anillo -->
+  <g fill="#6f6144" font-family="Georgia, 'Times New Roman', serif" font-size="15" letter-spacing="3">
+    <text x="230" y="46" text-anchor="middle">CONGRESO DE ANÁHUAC</text>
+    <text x="230" y="424" text-anchor="middle">CHILPANCINGO · 1813</text>
+  </g>
+  <g fill="#8a3b2c" font-family="Georgia, 'Times New Roman', serif" font-size="13" letter-spacing="2">
+    <text x="230" y="70" text-anchor="middle">VEINTITRÉ SENTIMIENTOS DE LA NACIÓN</text>
+  </g>
+  <g fill="#6f6144">
+    <circle cx="44" cy="230" r="4"/><circle cx="416" cy="230" r="4"/>
+  </g>
+
+  <!-- nopal -->
+  <g>
+    <path d="M148 300c-26 4-42-8-40-28 2-18 20-26 36-18 4-22 24-32 44-24 16-14 42-6 44 14 20-4 34 10 30 28-4 16-20 24-36 22-8 12-26 14-40 6z" fill="#8a8f63" stroke="#5c6042" stroke-width="2"/>
+    <path d="M230 300v34" stroke="#5c6042" stroke-width="3"/>
+    <path d="M230 320c-24 4-40 18-44 40h88c-4-22-20-36-44-40z" fill="#9aa173" stroke="#5c6042" stroke-width="2"/>
+    <g stroke="#5c6042" stroke-width="1.4" opacity=".8">
+      <path d="M132 268l10 6M160 250l8 8M190 244l6 10M226 242l-4 10M262 248l-6 10M298 260l-10 8M312 284l-12 4M164 288l10-6"/>
+    </g>
+  </g>
+
+  <!-- serpiente -->
+  <path d="M174 348c-18 6-16 22 2 24 16 2 26-10 20-18 14 4 18-10 6-14-10-4-16 6-12 12" fill="none" stroke="#4a4235" stroke-width="5" stroke-linecap="round"/>
+
+  <!-- aguila -->
+  <g>
+    <path d="M230 132c-8 22-10 40-6 58l-30-22 6 26 28 16c-6 16-4 30 6 40-4 14-2 24 6 30h-16c8 8 20 10 30 4l4 26 12-26c12 6 24 4 32-4h-16c8-8 8-18 4-30 10-12 10-26 4-42l28-16 4-26-30 22c4-18 2-36-6-56-8 10-14 12-24 12s-16-2-24-12z" fill="#5c5748" stroke="#3a362c" stroke-width="2"/>
+    <path d="M212 168c-22 4-42 14-56 28 16-8 32-12 48-12zM248 168c22 4 42 14 56 28-16-8-32-12-48-12z" fill="#7c7663"/>
+    <circle cx="230" cy="146" r="12" fill="#f0e6cf" stroke="#3a362c" stroke-width="1.6"/>
+    <circle cx="230" cy="146" r="4" fill="#2c2820"/>
+    <path d="M242 152l16 6-16 6z" fill="#a97f2f" stroke="#6f5320" stroke-width="1.2"/>
+    <path d="M196 246l34 14 34-14-10 30h-48z" fill="#3f5d7a" stroke="#2c4159" stroke-width="1.6"/>
+    <path d="M198 254h64" stroke="#e8d9b4" stroke-width="3" stroke-dasharray="4 6"/>
+  </g>
+
+  <!-- laurel -->
+  <g fill="#7c8660" stroke="#5c6042" stroke-width="1.2">
+    <path d="M104 300c-22-14-30-38-24-62 20 12 30 34 24 62z"/>
+    <path d="M356 300c22-14 30-38 24-62-20 12-30 34-24 62z"/>
+  </g>
+  <g stroke="#5c6042" stroke-width="1.6" fill="none">
+    <path d="M104 306c-14-16-20-38-18-58"/>
+    <path d="M356 306c14-16 20-38 18-58"/>
+  </g>
+
+  <g filter="url(#grano4)"><rect width="460" height="460" fill="#ffffff" opacity=".3"/></g>
+</svg>

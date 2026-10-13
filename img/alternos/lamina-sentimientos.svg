@@ -1,0 +1,75 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 440" width="640" height="440" role="img" aria-labelledby="t1 d1">
+  <title id="t1">Lámina: Sentimientos de la Nación</title>
+  <desc id="d1">Grabado de estilo colonial que representa un pliego Astillado sobre una mesa, junto a un tintero, una pluma y un cirio encendido.</desc>
+  <defs>
+    <pattern id="rayado1" width="7" height="7" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+      <rect width="7" height="7" fill="#f2e9d6"/>
+      <line x1="0" y1="0" x2="0" y2="7" stroke="#c9b795" stroke-width="1.6"/>
+    </pattern>
+    <linearGradient id="papel1" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#fbf6ea"/>
+      <stop offset="1" stop-color="#e6d9bd"/>
+    </linearGradient>
+    <linearGradient id="sombraPapel" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#7a6a4c" stop-opacity=".30"/>
+      <stop offset=".55" stop-color="#7a6a4c" stop-opacity="0"/>
+    </linearGradient>
+    <radialGradient id="luzVela" cx=".5" cy=".5" r=".5">
+      <stop offset="0" stop-color="#fff3c4" stop-opacity=".85"/>
+      <stop offset="1" stop-color="#fff3c4" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="grano1"><feTurbulence type="fractalNoise" baseFrequency=".9" numOctaves="3" stitchTiles="stitch"/><feColorMatrix type="saturate" values="0"/><feComponentTransfer><feFuncA type="linear" slope=".12"/></feComponentTransfer><feBlend in="SourceGraphic" mode="multiply"/></filter>
+  </defs>
+
+  <rect width="640" height="440" fill="url(#rayado1)"/>
+  <rect x="0" y="0" width="640" height="440" fill="url(#sombraPapel)"/>
+
+  <!-- mesa -->
+  <path d="M0 392h640v48H0z" fill="#c0ab84"/>
+  <path d="M0 392h640v6H0z" fill="#a08c68"/>
+  <g stroke="#a08c68" stroke-width="1.4" opacity=".7">
+    <path d="M0 410h640M0 424h640M0 434h640"/>
+  </g>
+
+  <!-- candelabro y cirio -->
+  <ellipse cx="536" cy="392" rx="52" height="0" fill="none"/>
+  <ellipse cx="536" cy="386" rx="44" ry="8" fill="#8f7c5b"/>
+  <rect x="530" y="250" width="12" height="136" fill="#f6efdd"/>
+  <rect x="530" y="250" width="5" height="136" fill="#e2d7ba"/>
+  <path d="M536 250c-14 16-14 30 0 30s14-14 0-30z" fill="#c8892f"/>
+  <path d="M536 230c-7 10-7 18 0 18s7-8 0-18z" fill="#f0d17a"/>
+  <ellipse cx="536" cy="264" rx="86" ry="70" fill="url(#luzVela)"/>
+
+  <!-- pliego Astillado -->
+  <g transform="translate(96 52)">
+    <path d="M8 40 L300 22 L318 268 L26 286 Z" fill="#cbb995" opacity=".55"/>
+    <path d="M0 30 L292 12 L310 258 L18 276 Z" fill="url(#papel1)" stroke="#6f6144" stroke-width="2"/>
+    <path d="M292 12 L310 258 L292 262 L276 16 Z" fill="#d9caa6"/>
+    <path d="M0 30 L292 12 L288 30 L6 46 Z" fill="#e2d5b4"/>
+    <!-- lineas de escritura -->
+    <g stroke="#5c5138" stroke-width="2.4" opacity=".62" stroke-linecap="round">
+      <path d="M40 76h208M40 96h226M40 116h196M40 136h214M40 156h168M40 176h222M40 196h190M40 216h140"/>
+    </g>
+    <!-- rúbrica -->
+    <path d="M176 232c18-10 34-4 30 8s-24 12-26 0 14-16 26-8 10 22-6 24-30-6-24-18" fill="none" stroke="#3f3520" stroke-width="2.6" stroke-linecap="round"/>
+    <!-- sello -->
+    <g transform="translate(84 210)">
+      <circle r="21" fill="none" stroke="#8e3b2c" stroke-width="2.4" opacity=".85"/>
+      <circle r="16" fill="none" stroke="#8e3b2c" stroke-width="1.2" opacity=".8"/>
+      <path d="M-9 2l6 6L10-8" fill="none" stroke="#8e3b2c" stroke-width="2.6" opacity=".9"/>
+    </g>
+  </g>
+
+  <!-- tintero y pluma -->
+  <g transform="translate(404 296)">
+    <ellipse cx="26" cy="96" rx="34" ry="9" fill="#8f7c5b"/>
+    <path d="M2 30h48l-8 62H10z" fill="#5b5240" stroke="#2f2a20" stroke-width="2"/>
+    <path d="M2 30h48l-3-14H5z" fill="#6d6350" stroke="#2f2a20" stroke-width="2"/>
+    <path d="M22 4c14 18 20 34 6 44-10 7-20-2-18-12 2-12 14-18 12-32z" fill="#f4eeda" stroke="#6f6144" stroke-width="1.6"/>
+    <path d="M26 40l4 14" stroke="#4a4132" stroke-width="2"/>
+  </g>
+
+  <rect width="640" height="440" fill="none" stroke="#8a7754" stroke-width="6"/>
+  <rect x="9" y="9" width="622" height="422" fill="none" stroke="#8a7754" stroke-width="1.4"/>
+  <g filter="url(#grano1)"><rect width="640" height="440" fill="#ffffff" opacity=".28"/></g>
+</svg>

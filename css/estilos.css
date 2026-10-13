@@ -1,0 +1,809 @@
+/* =========================================================
+   LA VOZ DEL ANÁHUAC — N° 1 · 16 de septiembre de 1813
+   Hoja de estilo · Unidad 1
+   Un impreso insurgente: papel de hilo, tinta de imprenta,
+   letra gótica para la cabecera y grabados para las láminas.
+   ========================================================= */
+
+/* Las tipografías de época van incrustadas en "fuentes/fuentes.css",
+   que se enlaza desde el HTML antes que esta hoja. */
+
+/* ---------- Paleta del impreso ---------- */
+:root{
+  --tinta:#241d13;
+  --tinta-media:#463c2c;
+  --tinta-tenue:#6d6049;
+  --rojo:#7e2a1e;          /* bermellón de las rúbricas */
+  --rojo-hondo:#5b1c13;
+  --papel:#efe4c5;
+  --papel-alto:#f6eed7;
+  --papel-hondo:#e3d5b0;
+  --filete:#8b7752;
+  --filete-suave:rgba(122,102,64,.45);
+
+  --serif:"EB Garamond","Iowan Old Style",Palatino,"Palatino Linotype","Book Antiqua",Georgia,"Times New Roman",serif;
+  --grabado:"IM Fell English","EB Garamond",Georgia,serif;
+  --gotica:"UnifrakturMaguntia","Old English Text MT","IM Fell English",Georgia,serif;
+  --simbolo:"Segoe UI Symbol","Apple Symbols","Noto Sans Symbols 2","DejaVu Sans",serif;
+}
+
+/* ---------- Base ---------- */
+*,
+*::before,
+*::after{ box-sizing:border-box; }
+
+html{ -webkit-text-size-adjust:100%; }
+
+body{
+  margin:0;
+  padding:clamp(1rem,3.5vw,3.4rem) clamp(.7rem,2vw,1.6rem);
+  font-family:var(--serif);
+  font-size:17px;
+  line-height:1.5;
+  color:var(--tinta);
+  /* El escritorio de madera sobre el que descansa el pliego */
+  background-color:#241b12;
+  background-image:
+    repeating-linear-gradient(93deg, rgba(255,238,200,.020) 0 2px, rgba(0,0,0,0) 2px 11px),
+    repeating-linear-gradient(87deg, rgba(0,0,0,.10) 0 3px, rgba(0,0,0,0) 3px 19px),
+    radial-gradient(ellipse 130% 100% at 50% -10%, #4a3928 0%, #33261a 45%, #1b140d 100%);
+  background-attachment:fixed;
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+}
+
+img{ max-width:100%; height:auto; display:block; }
+
+::selection{ background:rgba(126,42,30,.22); }
+
+/* =========================================================
+   LA HOJA — papel de hilo envejecido
+   ========================================================= */
+.hoja{
+  position:relative;
+  max-width:1140px;
+  margin:0 auto;
+  padding:clamp(1.8rem,3.4vw,3.1rem) clamp(1.3rem,3vw,3.1rem) clamp(1.6rem,3vw,2.6rem);
+  color:var(--tinta);
+  font-feature-settings:"liga" 1,"kern" 1,"onum" 1;
+  font-variant-numeric:oldstyle-nums;
+
+  /* Capas: grano, manchas de humedad, pliegues y las corondel y puntizones del papel */
+  background-color:var(--papel);
+  background-image:
+    url("../img/grano.svg"),
+    radial-gradient(circle at 9% 7%,   rgba(146,106,52,.16), rgba(146,106,52,0) 15%),
+    radial-gradient(circle at 94% 10%, rgba(146,106,52,.11), rgba(146,106,52,0) 12%),
+    radial-gradient(circle at 82% 90%, rgba(138,98,46,.15),  rgba(138,98,46,0) 17%),
+    radial-gradient(circle at 18% 95%, rgba(146,106,52,.10), rgba(146,106,52,0) 13%),
+    radial-gradient(circle at 50% 55%, rgba(120,88,44,.05),  rgba(120,88,44,0) 62%),
+    linear-gradient(90deg,  rgba(0,0,0,0) 49.75%, rgba(96,72,38,.05) 50%, rgba(0,0,0,0) 50.25%),
+    linear-gradient(180deg, rgba(0,0,0,0) 49.75%, rgba(96,72,38,.045) 50%, rgba(0,0,0,0) 50.25%),
+    repeating-linear-gradient(0deg,  rgba(112,90,52,.05) 0 1px, rgba(0,0,0,0) 1px 4px),
+    repeating-linear-gradient(90deg, rgba(112,90,52,.07) 0 1px, rgba(0,0,0,0) 1px 27px);
+  background-size:320px 320px, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%, auto, auto;
+  background-repeat:repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, repeat, repeat;
+  background-blend-mode:multiply, normal, normal, normal, normal, normal, normal, normal, normal, normal;
+
+  box-shadow:
+    0 44px 85px -22px rgba(0,0,0,.72),
+    0 9px 22px rgba(0,0,0,.5),
+    0 0 0 1px rgba(0,0,0,.38);
+  transform:rotate(-.18deg);
+}
+
+/* Marco exterior */
+.hoja::before{
+  content:"";
+  position:absolute;
+  inset:12px;
+  border:1px solid rgba(110,92,58,.55);
+  pointer-events:none;
+}
+
+/* Segundo filete y viñeta de los bordes */
+.hoja::after{
+  content:"";
+  position:absolute;
+  inset:16px;
+  border:1px solid rgba(110,92,58,.24);
+  background:radial-gradient(ellipse at 50% 50%, rgba(0,0,0,0) 58%, rgba(74,55,26,.15) 100%);
+  pointer-events:none;
+}
+
+/* =========================================================
+   ORNAMENTOS Y RÓTULOS COMUNES
+   ========================================================= */
+.ornamento-linea{
+  margin:.5rem 0;
+  font-family:var(--simbolo);
+  font-size:.9rem;
+  line-height:1;
+  color:var(--rojo);
+  letter-spacing:.9em;
+  text-indent:.9em;
+  text-align:center;
+}
+
+.rotulo{
+  margin:0 0 .35rem;
+  font-size:.72rem;
+  font-weight:600;
+  letter-spacing:.28em;
+  text-transform:uppercase;
+  color:var(--rojo);
+}
+
+/* =========================================================
+   ENCABEZADO
+   ========================================================= */
+.cabecera{ text-align:center; }
+
+.faja{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:1rem;
+  flex-wrap:wrap;
+  padding-bottom:.5rem;
+  border-bottom:1px solid var(--filete-suave);
+  font-size:.68rem;
+  letter-spacing:.2em;
+  text-transform:uppercase;
+  color:var(--tinta-tenue);
+}
+.faja__centro{ text-align:center; }
+
+.cabecera__nombre{
+  display:flex;
+  flex-wrap:wrap;
+  align-items:baseline;
+  justify-content:center;
+  gap:0 .32em;
+  margin:.25rem 0 .35rem;
+  font-family:var(--gotica);
+  font-weight:400;
+  font-size:clamp(2.7rem,8.6vw,6rem);
+  line-height:.92;
+  letter-spacing:.01em;
+  color:#2a2216;
+  text-shadow:.7px .6px 0 rgba(40,28,10,.32);
+}
+.cabecera__del{
+  font-family:var(--grabado);
+  font-style:italic;
+  font-size:.3em;
+  letter-spacing:.1em;
+  color:var(--rojo);
+  transform:translateY(-.28em);
+}
+
+.cabecera__lema{
+  margin:.45rem auto 1rem;
+  max-width:52rem;
+  font-family:var(--grabado);
+  font-style:italic;
+  font-size:1rem;
+  color:var(--tinta-media);
+}
+
+.cabecera__fecha{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  gap:1.2rem;
+  flex-wrap:wrap;
+  padding:.55rem .2rem;
+  border-top:2px solid var(--filete);
+  border-bottom:1px solid var(--filete);
+  font-size:.72rem;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  color:var(--tinta-media);
+}
+.cabecera__fecha-dia{
+  font-family:var(--grabado);
+  font-size:.96rem;
+  letter-spacing:.14em;
+  color:var(--tinta);
+}
+.cabecera__fecha-lado{ font-size:.66rem; color:var(--tinta-tenue); }
+
+.sumario{
+  margin:1rem auto 0;
+  max-width:62rem;
+  font-size:.86rem;
+  font-style:italic;
+  line-height:1.65;
+  color:var(--tinta-media);
+}
+.sumario__rotulo{
+  margin-right:.35rem;
+  font-style:normal;
+  font-weight:600;
+  letter-spacing:.28em;
+  text-transform:uppercase;
+  font-size:.7rem;
+  color:var(--rojo);
+}
+
+/* =========================================================
+   PRIMERA PLANA
+   ========================================================= */
+.plana{
+  display:grid;
+  grid-template-columns:minmax(0,2fr) minmax(0,1fr);
+  gap:1.6rem 2rem;
+  margin-top:1.5rem;
+  padding-top:1.4rem;
+  border-top:3px double var(--filete);
+}
+
+.antetitulo{
+  margin:0 0 .3rem;
+  font-size:.7rem;
+  font-weight:600;
+  letter-spacing:.22em;
+  text-transform:uppercase;
+  color:var(--rojo);
+}
+
+.titular{
+  margin:0 0 .45rem;
+  font-family:var(--grabado);
+  font-weight:400;
+  font-size:clamp(1.85rem,4.4vw,2.85rem);
+  line-height:1.03;
+  letter-spacing:.004em;
+  color:#241d13;
+}
+
+.subtitular{
+  margin:0 0 .5rem;
+  font-size:1.06rem;
+  line-height:1.36;
+  font-style:italic;
+  color:var(--tinta-media);
+}
+
+.firma{
+  margin:0 0 1rem;
+  padding-top:.42rem;
+  border-top:1px solid var(--filete-suave);
+  font-size:.68rem;
+  font-weight:600;
+  letter-spacing:.16em;
+  text-transform:uppercase;
+  color:var(--tinta-tenue);
+}
+
+/* Cuerpo a columnas, como el pliego original */
+.cuerpo{
+  font-size:1rem;
+  text-align:justify;
+  hyphens:auto;
+  -webkit-hyphens:auto;
+  column-count:2;
+  column-gap:1.6rem;
+  column-rule:1px solid var(--filete-suave);
+}
+.cuerpo--una{ column-count:1; }
+
+.cuerpo > p{
+  margin:0;
+  text-indent:1.15em;
+  orphans:2;
+  widows:2;
+}
+.cuerpo > p:first-child{ text-indent:0; }
+
+/* Capitular (letra capital rubricada) */
+.entradilla::first-letter{
+  float:left;
+  margin:.02em .12em 0 0;
+  font-family:var(--gotica);
+  font-size:3.9em;
+  line-height:.72;
+  color:var(--rojo-hondo);
+}
+
+/* Cita de autoridad */
+.cita{
+  margin:.9rem 0;
+  padding:.15rem 0 .15rem 1rem;
+  border-left:3px double var(--rojo);
+  font-family:var(--grabado);
+  font-style:italic;
+  font-size:1.02rem;
+  color:var(--tinta-media);
+  break-inside:avoid;
+}
+.cita p{ margin:0 0 .3rem; text-align:left; text-indent:0; hyphens:none; }
+.cita cite{
+  display:block;
+  font-family:var(--serif);
+  font-style:normal;
+  font-size:.66rem;
+  font-weight:600;
+  letter-spacing:.16em;
+  text-transform:uppercase;
+  color:var(--tinta-tenue);
+}
+
+/* Cajón de los Sentimientos */
+.cajon-datos{
+  margin-top:1.1rem;
+  padding:.9rem 1.1rem 1rem;
+  border:4px double var(--filete);
+  background:rgba(247,239,215,.55);
+}
+.cajon-datos__titulo{
+  margin:0 0 .6rem;
+  padding-bottom:.45rem;
+  border-bottom:1px solid var(--filete-suave);
+  font-family:var(--grabado);
+  font-size:1.12rem;
+  text-align:center;
+  letter-spacing:.03em;
+}
+.lista-puntos{
+  margin:0;
+  padding:0;
+  list-style:none;
+  font-size:.94rem;
+}
+.lista-puntos li{
+  position:relative;
+  margin:0 0 .4rem;
+  padding-left:1.1rem;
+  text-align:justify;
+}
+.lista-puntos li::before{
+  content:"\2022";
+  position:absolute;
+  left:.15rem;
+  color:var(--rojo);
+}
+.lista-puntos span{
+  font-weight:700;
+  color:var(--rojo);
+  font-variant-caps:small-caps;
+  letter-spacing:.04em;
+}
+.cajon-datos__pie{
+  margin:.6rem 0 0;
+  font-size:.74rem;
+  font-style:italic;
+  text-align:right;
+  color:var(--tinta-tenue);
+}
+
+/* ---------- Columna lateral ---------- */
+.lateral{
+  padding-left:1.4rem;
+  border-left:1px solid var(--filete-suave);
+}
+
+/* =========================================================
+   LÁMINAS — grabados con envejecimiento
+   ========================================================= */
+.lamina{ margin:0 0 1.3rem; }
+.lamina__vista{
+  position:relative;
+  display:block;
+  padding:5px;
+  border:1px solid var(--filete);
+  background:rgba(245,237,216,.7);
+}
+.lamina img{
+  width:100%;
+  height:auto;
+  filter:sepia(.5) saturate(.5) contrast(1.07) brightness(.98);
+}
+/* Viñeta del grabado */
+.lamina__vista::before{
+  content:"";
+  position:absolute;
+  inset:5px;
+  background:radial-gradient(ellipse at 50% 45%, rgba(255,248,225,0) 55%, rgba(70,52,24,.3) 100%);
+  pointer-events:none;
+}
+/* Grano de impresión sobre la lámina */
+.lamina__vista::after{
+  content:"";
+  position:absolute;
+  inset:5px;
+  background-image:url("../img/grano.svg");
+  background-size:320px 320px;
+  mix-blend-mode:multiply;
+  opacity:.55;
+  pointer-events:none;
+}
+
+.lamina figcaption{
+  margin-top:.45rem;
+  font-size:.72rem;
+  line-height:1.45;
+  text-align:justify;
+  color:var(--tinta-tenue);
+}
+
+/* Encuadre de cada lámina */
+.lamina--retrato .lamina__vista img{ aspect-ratio:3/4; object-fit:cover; object-position:center top; }
+.lamina--escudo  .lamina__vista img{ aspect-ratio:5/6; object-fit:cover; }
+.lamina--ancha   .lamina__vista img{ aspect-ratio:3/2; object-fit:cover; }
+.lamina--documento .lamina__vista img{ aspect-ratio:4/3; object-fit:cover; }
+
+/* Estado de carga, mientras se sustituye por la foto */
+.lamina img[data-estado="cargando"]{ opacity:.45; filter:sepia(.45) blur(3px); }
+.lamina img[data-estado="listo"],
+.lamina img[data-respaldo="si"]{ opacity:1; }
+.lamina img[data-respaldo="si"]{ filter:sepia(.35) saturate(.6); }
+
+/* ---------- Boletín ---------- */
+.boletin{
+  padding-top:.7rem;
+  border-top:3px double var(--filete);
+}
+.boletin__titulo{
+  margin:0 0 .5rem;
+  font-family:var(--grabado);
+  font-size:1.15rem;
+  text-align:center;
+  letter-spacing:.04em;
+}
+.boletin__lista{
+  margin:0;
+  padding:0;
+  list-style:none;
+  font-size:.9rem;
+}
+.boletin__lista li{
+  padding:.4rem 0;
+  border-top:1px dotted var(--filete-suave);
+  text-align:justify;
+}
+.boletin__lista li:first-child{ border-top:0; }
+.boletin__lista span{
+  font-weight:700;
+  color:var(--rojo);
+  font-variant-caps:small-caps;
+  letter-spacing:.04em;
+}
+
+/* =========================================================
+   SEGUNDA Y TERCERA PLANAS
+   ========================================================= */
+.planas-menores{
+  display:grid;
+  grid-template-columns:minmax(0,1fr) minmax(0,1fr);
+  gap:1.8rem;
+  margin-top:1.5rem;
+  padding-top:1.4rem;
+  border-top:3px double var(--filete);
+}
+
+.editorial{
+  padding:1rem 1.1rem 1.1rem;
+  border:4px double var(--filete);
+  background:rgba(240,229,197,.5);
+}
+.editorial__titulo,
+.secundaria__titulo{
+  margin:0 0 .7rem;
+  font-family:var(--grabado);
+  font-weight:400;
+  font-size:1.5rem;
+  line-height:1.08;
+}
+.editorial .cuerpo{ font-style:italic; font-size:.98rem; }
+.editorial__firma{
+  margin:.5rem 0 0;
+  text-align:right;
+  font-family:var(--grabado);
+  font-style:italic;
+  font-size:1rem;
+}
+
+.lamina--ancha{ margin-bottom:.9rem; }
+
+/* =========================================================
+   AVISOS PARTICULARES
+   ========================================================= */
+.avisos{
+  margin-top:1.5rem;
+  padding-top:1.4rem;
+  border-top:3px double var(--filete);
+}
+.avisos__titulo{
+  display:flex;
+  align-items:center;
+  gap:1rem;
+  margin:0 0 1rem;
+  font-family:var(--grabado);
+  font-weight:400;
+  font-size:1.3rem;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+}
+.avisos__titulo::before,
+.avisos__titulo::after{
+  content:"";
+  flex:1;
+  height:0;
+  border-top:1px solid var(--filete-suave);
+  border-bottom:1px solid var(--filete-suave);
+}
+.avisos__columnas{
+  column-count:3;
+  column-gap:1.6rem;
+  column-rule:1px solid var(--filete-suave);
+  font-size:.9rem;
+}
+.aviso{
+  margin:0 0 .7rem;
+  text-align:justify;
+  hyphens:auto;
+  break-inside:avoid;
+}
+.aviso__mano{
+  margin-right:.15rem;
+  font-family:var(--simbolo);
+  color:var(--rojo);
+}
+.aviso__guia{
+  font-weight:700;
+  color:var(--rojo);
+  font-variant-caps:small-caps;
+  letter-spacing:.03em;
+}
+
+/* =========================================================
+   CIERRE — lámina del pliego y cupón
+   ========================================================= */
+.cierre{
+  display:grid;
+  grid-template-columns:minmax(0,1fr) minmax(0,1fr);
+  gap:1.8rem;
+  align-items:start;
+  margin-top:1.5rem;
+  padding-top:1.4rem;
+  border-top:3px double var(--filete);
+}
+.lamina--documento{ margin:0; }
+
+.suscripcion{
+  position:relative;
+  padding:1rem 1.1rem 1.2rem;
+  border:4px double var(--filete);
+  background:rgba(240,229,197,.5);
+}
+.suscripcion__titulo{
+  margin:0 0 .5rem;
+  font-family:var(--grabado);
+  font-weight:400;
+  font-size:1.3rem;
+  text-align:center;
+  letter-spacing:.04em;
+}
+.suscripcion__texto{
+  margin:0 0 .8rem;
+  font-size:.9rem;
+  font-style:italic;
+  text-align:justify;
+  color:var(--tinta-media);
+}
+.suscripcion__corte{
+  margin:0 0 .8rem;
+  padding-top:.6rem;
+  border-top:1px dashed var(--filete);
+  font-size:.66rem;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  text-align:center;
+  color:var(--tinta-tenue);
+}
+
+.suscripcion__formulario{ display:grid; gap:.7rem; }
+
+.campo{ display:grid; gap:.15rem; }
+.campo label{
+  font-size:.68rem;
+  font-weight:600;
+  letter-spacing:.16em;
+  text-transform:uppercase;
+  color:var(--tinta-tenue);
+}
+.campo input{
+  width:100%;
+  padding:.3rem .1rem;
+  font-family:var(--serif);
+  font-size:1rem;
+  color:var(--tinta);
+  background:transparent;
+  border:0;
+  border-bottom:1px solid var(--filete);
+  border-radius:0;
+}
+.campo input::placeholder{ color:rgba(109,96,73,.7); font-style:italic; }
+.campo input:focus{
+  outline:none;
+  border-bottom:2px solid var(--rojo);
+  background:rgba(255,252,240,.5);
+}
+.campo input[aria-invalid="true"]{
+  border-bottom:2px solid var(--rojo-hondo);
+  background:rgba(126,42,30,.06);
+}
+.campo__error{
+  min-height:.9em;
+  font-size:.7rem;
+  font-style:italic;
+  color:var(--rojo-hondo);
+}
+.campo__error:empty{ display:none; }
+
+.boton{
+  margin-top:.15rem;
+  padding:.7rem 1rem;
+  font-family:var(--serif);
+  font-size:.74rem;
+  font-weight:600;
+  letter-spacing:.26em;
+  text-transform:uppercase;
+  color:var(--papel-alto);
+  background:var(--rojo);
+  border:1px solid var(--rojo-hondo);
+  box-shadow:inset 0 0 0 2px rgba(255,240,215,.18), 0 1px 0 rgba(0,0,0,.25);
+  cursor:pointer;
+  transition:background .18s ease, transform .18s ease;
+}
+.boton:hover{ background:var(--rojo-hondo); }
+.boton:active{ transform:translateY(1px); }
+.boton:focus-visible{ outline:2px solid var(--tinta); outline-offset:2px; }
+
+.suscripcion__mensaje{
+  margin:.2rem 0 0;
+  min-height:1.1em;
+  font-size:.78rem;
+  font-style:italic;
+  color:var(--tinta-tenue);
+}
+.suscripcion__mensaje.ok{ color:#2f5233; font-style:normal; font-weight:700; }
+.suscripcion__mensaje.error{ color:var(--rojo-hondo); font-style:normal; font-weight:700; }
+
+/* =========================================================
+   COLOFÓN
+   ========================================================= */
+.colofon{
+  margin-top:1.5rem;
+  padding-top:1rem;
+  border-top:3px double var(--filete);
+  text-align:center;
+}
+.colofon__marca{
+  margin:.1rem 0 .4rem;
+  font-family:var(--gotica);
+  font-weight:400;
+  font-size:1.5rem;
+  letter-spacing:.04em;
+}
+.colofon__texto{
+  margin:0;
+  font-size:.68rem;
+  letter-spacing:.12em;
+  line-height:1.9;
+  text-transform:uppercase;
+  color:var(--tinta-tenue);
+}
+.colofon__fino{
+  font-size:.72rem;
+  font-style:italic;
+  letter-spacing:.02em;
+  text-transform:none;
+}
+
+/* =========================================================
+   ADAPTACIONES — escritorio, tableta y teléfono
+   ========================================================= */
+
+/* Portátiles pequeños y tabletas apaisadas: el texto pasa a una sola columna */
+@media (max-width:1080px){
+  .cuerpo{ column-count:1; column-rule:0; }
+  .avisos__columnas{ column-count:2; }
+}
+
+/* Tabletas y teléfonos: la hoja se desdobla en una sola tira */
+@media (max-width:880px){
+  body{
+    padding:1rem .6rem 1.8rem;
+    font-size:16px;
+    background-attachment:scroll;
+  }
+  .hoja{
+    transform:none;
+    padding:1.7rem 1.4rem 2rem;
+  }
+  .hoja::before{ inset:8px; }
+  .hoja::after{ inset:11px; }
+
+  .plana,
+  .planas-menores,
+  .cierre{
+    grid-template-columns:1fr;
+    gap:1.6rem;
+  }
+  .cuerpo{ column-count:1; }
+  .avisos__columnas{ column-count:2; }
+
+  .lateral{
+    padding-top:1.2rem;
+    padding-left:0;
+    border-top:1px solid var(--filete-suave);
+    border-left:0;
+  }
+
+  .lamina--retrato .lamina__vista,
+  .lamina--escudo .lamina__vista{
+    max-width:300px;
+    margin:0 auto;
+  }
+}
+
+/* Teléfonos */
+@media (max-width:620px){
+  body{ padding:.7rem .4rem 1.4rem; }
+  .hoja{ padding:1.45rem 1.1rem 1.7rem; }
+  .hoja::before{ inset:6px; }
+  .hoja::after{ inset:9px; }
+
+  .faja{ gap:.5rem; font-size:.58rem; letter-spacing:.1em; }
+  .faja__centro{ display:none; }
+
+  .cabecera__nombre{ gap:0 .16em; }
+  .cabecera__lema{ font-size:.9rem; }
+  .cabecera__fecha{ gap:.5rem; padding:.5rem 0; }
+  .cabecera__fecha-lado{ display:none; }
+  .cabecera__fecha-dia{ font-size:.78rem; letter-spacing:.05em; }
+  .sumario{ font-size:.82rem; }
+
+  .titular{ font-size:clamp(1.55rem,7.6vw,2rem); }
+  .subtitular{ font-size:1rem; }
+  .entradilla::first-letter{ font-size:3.3em; }
+  .cita{ font-size:.98rem; }
+
+  .editorial__titulo,
+  .secundaria__titulo,
+  .boletin__titulo{ font-size:1.28rem; }
+
+  .avisos__titulo{ gap:.6rem; font-size:1.05rem; }
+  .avisos__columnas{ column-count:1; }
+
+  .lamina--retrato .lamina__vista,
+  .lamina--escudo .lamina__vista{ max-width:none; }
+
+  .suscripcion__titulo{ font-size:1.18rem; }
+  .campo input{ font-size:16px; }   /* evita el zumo automático del móvil */
+
+  .colofon__marca{ font-size:1.3rem; }
+}
+
+/* =========================================================
+   IMPRESIÓN — el pliego limpio, sin el escritorio
+   ========================================================= */
+@media print{
+  body{ background:#fff; padding:0; }
+  .hoja{
+    transform:none;
+    box-shadow:none;
+    max-width:none;
+    background-image:none;
+    background-color:#fff;
+  }
+  .hoja::before,
+  .hoja::after{ display:none; }
+  .suscripcion{ display:none; }
+  .lamina__vista::before,
+  .lamina__vista::after{ display:none; }
+  .lamina img{ filter:none; }
+}
